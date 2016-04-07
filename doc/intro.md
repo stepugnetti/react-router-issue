@@ -25,4 +25,20 @@ Is this behavior expected? Maybe the composition of components is possible only 
 
 ## Possible problems ##
 
+### API ###
+
+I might have misunderstood Reagent's way of passing children through components. I went through issue [#68](https://github.com/reagent-project/reagent/issues/68) and issue [#13](https://github.com/reagent-project/reagent/issues/13), but I am not sure I understand. Does any  of the following two code snippets define a component equivalent to `my-comp*`?
+
+    (defn my-comp1
+      [& args]
+      (into [my-comp*] args))
+
+    (defn my-comp2
+      [opts & children]
+      [my-comp* opts children])
+
+In this project both approaches were tried with the `Route` component, and both resulted in an empty `<noscript>`.
+
+### External noise ###
+
 The external components have been imported into Clojurescript from a bundled js file of the latest version of this lib (made available by the authors at [https://npmcdn.com/react-router@2.0.1/umd/ReactRouter.js](https://npmcdn.com/react-router@2.0.1/umd/ReactRouter.js) as described in the [README](https://github.com/reactjs/react-router/tree/v2.0.1#installation)). Could the bundling be responsible for this behavior? Or maybe these components lack the implementation of some optional method that Reagent relies on?

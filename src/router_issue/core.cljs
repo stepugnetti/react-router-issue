@@ -13,7 +13,11 @@
 ;;   (into [route*] args))
 
 (def route (r/adapt-react-class (.-Route react-router)))
+;; NEITHER OF THESE WORKS.
 ;; (def route* (r/adapt-react-class (.-Route react-router)))
+;; (defn route
+;;   [opts & children]
+;;   [route* opts children])
 ;; (defn route
 ;;   [& args]
 ;;   (into [route*] args))
